@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>$TIRED — sleep it off, wake up rich</title>
+  <meta name="description" content="$TIRED: the comfiest crypto on the internet. Close eyes. Open bags." />
+  <meta property="og:title" content="$TIRED — sleep it off, wake up rich">
+  <meta property="og:description" content="Close eyes. Open bags. $TIRED is the sleep-core meme coin." />
+  <meta property="og:image" content="assets/tired.gif" />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { color-scheme: dark; }
+    body{ background:#060a12; }
+    .starfield{
+      background:
+        radial-gradient(2px 2px at 20% 30%, #fff8 50%, #0000 51%),
+        radial-gradient(1.5px 1.5px at 70% 60%, #fff8 50%, #0000 51%),
+        radial-gradient(1.2px 1.2px at 40% 80%, #fff8 50%, #0000 51%),
+        radial-gradient(1px 1px at 90% 20%, #fff8 50%, #0000 51%),
+        #060a12;
+      background-size: 800px 800px, 900px 900px, 1100px 1100px, 1000px 1000px, cover;
+      animation: drift 40s linear infinite;
+    }
+    @keyframes drift { to { background-position: 800px 800px, -900px 900px, 1100px -1100px, -1000px -1000px; } }
+    .glass{ background: linear-gradient(180deg, #0b1426aa, #050910aa); backdrop-filter: blur(8px); border:1px solid #1e2a41; }
+    .btn{ @apply inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold transition;
+          background: linear-gradient(135deg,#5eead4,#60a5fa); color:#061018; }
+    .btn:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+    .btn-outline{ border:1px solid #284169; color:#c9e3ff; background: transparent; }
+    .zz{ position:absolute; font-weight:800; opacity:.12; animation: floatZ 6s ease-in-out infinite; }
+    @keyframes floatZ { 0%{ transform: translateY(0) rotate(-10deg);} 50%{ transform: translateY(-16px) rotate(10deg);} 100%{ transform: translateY(0) rotate(-10deg);} }
+    .section{ padding: 80px 0; }
+  </style>
+</head>
+<body class="text-slate-200 selection:bg-cyan-500/30 selection:text-white">
+
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-0 z-40">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mt-4 glass rounded-2xl px-4 py-3 flex items-center justify-between">
+        <a class="flex items-center gap-3" href="#">
+          <img src="assets/tired.gif" alt="$TIRED" class="h-9 w-9 rounded-full object-cover">
+          <span class="font-extrabold tracking-wide">$TIRED</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#about" class="hover:text-white/90">About</a>
+          <a href="#tokenomics" class="hover:text-white/90">Tokenomics</a>
+          <a href="#how" class="hover:text-white/90">How to Buy</a>
+          <a href="#roadmap" class="hover:text-white/90">Roadmap</a>
+          <a href="#chart" class="hover:text-white/90">Chart</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <button id="sleepBtn" class="btn-outline rounded-xl px-4 py-2 text-sm">Lights Out 🌙</button>
+          <a href="https://twitter.com/" target="_blank" class="btn text-sm">Join X</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-36 md:pt-40 pb-16 relative overflow-hidden starfield">
+    <div aria-hidden="true" class="zz text-6xl left-8 top-16">Z</div>
+    <div aria-hidden="true" class="zz text-7xl left-16 top-24">Z</div>
+    <div aria-hidden="true" class="zz text-8xl right-10 top-10">Z</div>
+    <div class="mx-auto max-w-7xl px-4 flex flex-col-reverse md:flex-row items-center gap-10">
+      <div class="w-full md:w-1/2">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          The **sleep-core** coin: <span class="text-cyan-300">$TIRED</span>
+        </h1>
+        <p class="mt-4 text-slate-300/90 text-lg">
+          Close eyes. Open bags. While the market panics, we nap. When we wake up… it’s up only. 🛌📈
+        </p>
+
+        <!-- Contract -->
+        <div class="mt-6 glass rounded-2xl p-3">
+          <div class="text-xs uppercase text-slate-400 mb-1">Contract</div>
+          <div class="flex items-center gap-2">
+            <code id="ca" class="text-sm break-all">YOUR_CONTRACT_ADDRESS_HERE</code>
+            <button id="copyBtn" class="btn-outline px-3 py-1.5 rounded-lg text-xs">Copy</button>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://dexscreener.com/" target="_blank" class="btn">View Chart</a>
+          <a href="https://raydium.io/swap/" target="_blank" class="btn-outline rounded-xl px-5 py-3">Buy on DEX</a>
+          <a href="#how" class="btn-outline rounded-xl px-5 py-3">How to Buy</a>
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2">
+        <div class="rounded-3xl overflow-hidden border border-cyan-900/40 shadow-2xl">
+          <img src="assets/tired.gif" alt="sleep gif" class="w-full h-[360px] object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-bold text-xl">Comfy Economics</h3>
+          <p class="mt-2 text-slate-300/90">No team tokens. No presale. Sleep-to-hold tokenomics that reward the patient.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-bold text-xl">Sleep-Fi Culture</h3>
+          <p class="mt-2 text-slate-300/90">Meme first. Community always. Post your nap. Farm the Zzz’s.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-bold text-xl">Simple Mission</h3>
+          <p class="mt-2 text-slate-300/90">We’re here to make resting bullish again. Rest well, anon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section id="tokenomics" class="section bg-[#070c16]">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Tokenomics</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-extrabold">1,000,000,000</div>
+          <div class="text-sm text-slate-400">Total Supply</div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-extrabold">0%</div>
+          <div class="text-sm text-slate-400">Buy / Sell Tax</div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-extrabold">LP Burned</div>
+          <div class="text-sm text-slate-400">Fair & un-ruggable*</div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-extrabold">CEX? 😴</div>
+          <div class="text-sm text-slate-400">Maybe after a nap</div>
+        </div>
+      </div>
+      <p class="text-xs text-slate-500 mt-3">*Update these to match your actual deployment.</p>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section id="how" class="section">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">How to Buy</h2>
+      <ol class="space-y-4">
+        <li class="glass rounded-2xl p-5"><b>1) Get a wallet.</b> Phantom / MetaMask (chain of choice). Fund it with gas coin.</li>
+        <li class="glass rounded-2xl p-5"><b>2) Go to a DEX.</b> Raydium / Uniswap / PancakeSwap. Paste our CA.</li>
+        <li class="glass rounded-2xl p-5"><b>3) Slippage.</b> 0–2% usually fine. Confirm, then go take a nap.</li>
+      </ol>
+      <div class="mt-4 text-sm text-slate-400">Tip: always verify the contract address before swapping.</div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" class="section bg-[#070c16]">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Roadmap</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-bold text-xl">Phase 1 — Power Nap</h3>
+          <ul class="mt-2 list-disc list-inside text-slate-300/90">
+            <li>Launch & Liquidity</li><li>Site + X + TG live</li><li>Dexscreener & CMC/CG listings</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-bold text-xl">Phase 2 — REM Cycle</h3>
+          <ul class="mt-2 list-disc list-inside text-slate-300/90">
+            <li>Influencer push</li><li>Memes & Zzz quests</li><li>Sleep-to-earn mini dApp</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-bold text-xl">Phase 3 — Awakening</h3>
+          <ul class="mt-2 list-disc list-inside text-slate-300/90">
+            <li>CEX outreach</li><li>Merch: eye masks & blankets</li><li>Global nap-a-thon</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHART -->
+  <section id="chart" class="section">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Live Chart</h2>
+      <div class="glass rounded-2xl p-2">
+        <!-- Replace with your pair link -->
+        <iframe
+          src="https://dexscreener.com/solana/PLACE_YOUR_PAIR"
+          class="w-full h-[540px] rounded-xl"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-[#070c16]">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">FAQ</h2>
+      <div class="space-y-4">
+        <details class="glass rounded-2xl p-5">
+          <summary class="cursor-pointer font-semibold">Is $TIRED on <i>your</i> chain?</summary>
+          <p class="mt-3 text-slate-300/90">Yes—$TIRED launches where naps are deepest. Replace links above for your chain.</p>
+        </details>
+        <details class="glass rounded-2xl p-5">
+          <summary class="cursor-pointer font-semibold">Is this financial advice?</summary>
+          <p class="mt-3 text-slate-300/90">No. Drink water. Touch grass. Sleep 8 hours.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10">
+    <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-400">© <span id="year"></span> $TIRED. Close eyes. Open bags.</p>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="https://twitter.com/" target="_blank" class="hover:text-white/90">X</a>
+        <a href="https://t.me/" target="_blank" class="hover:text-white/90">Telegram</a>
+        <a href="#" class="hover:text-white/90">Docs</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Copy CA
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      const ca = document.getElementById('ca').textContent.trim();
+      try { await navigator.clipboard.writeText(ca); 
+        const btn = document.getElementById('copyBtn');
+        const old = btn.textContent; btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = old, 1200);
+      } catch(e){ alert('Copy failed'); }
+    });
+
+    // Lights Out (extra dim overlay)
+    const sleepBtn = document.getElementById('sleepBtn');
+    let dimmer;
+    sleepBtn.addEventListener('click', () => {
+      if (!dimmer){
+        dimmer = document.createElement('div');
+        dimmer.style.position='fixed';
+        dimmer.style.inset='0';
+        dimmer.style.background='rgba(0,0,0,.35)';
+        dimmer.style.pointerEvents='none';
+        dimmer.style.zIndex='30';
+        document.body.appendChild(dimmer);
+        sleepBtn.textContent = 'Lights On ☀️';
+      } else {
+        dimmer.remove(); dimmer = null; sleepBtn.textContent = 'Lights Out 🌙';
+      }
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
