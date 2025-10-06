@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -220,6 +220,34 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section id="gallery" class="section bg-[#070c16]">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Gallery</h2>
+      <p class="mb-8 text-slate-300/90">Wherever you sleep, $TIREDNIGGA follows...</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl overflow-hidden cursor-pointer">
+          <img src="69362d1265534cc083f84d7921e6db99.jpeg" alt="Classroom nap" class="w-full h-64 object-cover lightbox">
+        </div>
+        <div class="glass rounded-2xl overflow-hidden cursor-pointer">
+          <img src="b55208bebad542648c598cb8e15a67df.jpeg" alt="Grocery nap" class="w-full h-64 object-cover lightbox">
+        </div>
+        <div class="glass rounded-2xl overflow-hidden cursor-pointer">
+          <img src="2215d895e60444ff8d77814d9d396872.jpeg" alt="Subway nap" class="w-full h-64 object-cover lightbox">
+        </div>
+        <div class="glass rounded-2xl overflow-hidden cursor-pointer">
+          <img src="4587f183729e4750b11c504ed52cdde7.jpeg" alt="Office nap" class="w-full h-64 object-cover lightbox">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightboxOverlay" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50">
+    <img id="lightboxImg" src="" alt="Gallery Image" class="max-h-[90%] max-w-[90%] rounded-xl shadow-2xl">
+  </div>
+
   <!-- FAQ -->
   <section class="section bg-[#070c16]">
     <div class="mx-auto max-w-6xl px-4">
@@ -316,6 +344,22 @@
         if (current < 80) spawn(3);
       }, 4000);
     })();
+
+    // === Simple Lightbox for Gallery ===
+    const overlay = document.getElementById('lightboxOverlay');
+    const overlayImg = document.getElementById('lightboxImg');
+    document.querySelectorAll('.lightbox').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+      });
+    });
+    overlay.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      overlayImg.src = "";
+    });
   </script>
 </body>
 </html>
