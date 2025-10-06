@@ -34,6 +34,25 @@
     .zz{ position:absolute; font-weight:800; opacity:.12; animation: floatZ 6s ease-in-out infinite; }
     @keyframes floatZ { 0%{ transform: translateY(0) rotate(-10deg);} 50%{ transform: translateY(-16px) rotate(10deg);} 100%{ transform: translateY(0) rotate(-10deg);} }
     .section{ padding: 80px 0; }
+
+    /* === Extra Zzz (flying field) === */
+    .zz-fly{
+      position: fixed; left: 0; top: 0;
+      pointer-events: none; user-select: none; will-change: transform, opacity;
+      font-weight: 800;
+      color: #c8e7ff;
+      text-shadow: 0 2px 6px rgba(0,0,0,.35);
+      opacity: var(--alpha, .12);
+      animation: fly var(--dur, 20s) linear infinite;
+      animation-delay: var(--delay, 0s);
+      z-index: 5;
+    }
+    @keyframes fly{
+      0%   { transform: translate(var(--x0), 110vh) rotate(var(--r0)); opacity:0; }
+      10%  { opacity: var(--alpha, .12); }
+      50%  { transform: translate(calc(var(--x0) + var(--xwave)), 50vh) rotate(var(--r1)); }
+      100% { transform: translate(calc(var(--x0) + calc(var(--xwave) * 2)), -10vh) rotate(var(--r2)); opacity:0; }
+    }
   </style>
 </head>
 <body class="text-slate-200 selection:bg-cyan-500/30 selection:text-white">
@@ -261,6 +280,42 @@
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // === Flying Zzz spawner (baked in) ===
+    (function initZs(){
+      const rand = (min, max) => Math.random() * (max - min) + min;
+      const root = document.body;
+
+      function spawn(count = 40){
+        for(let i=0; i<count; i++){
+          const z = document.createElement('div');
+          z.className = 'zz-fly';
+          z.textContent = 'Z';
+
+          // random parameters per Z
+          z.style.fontSize = `${Math.floor(rand(18, 120))}px`;
+          z.style.setProperty('--x0', `${Math.floor(rand(0, 100))}vw`);
+          z.style.setProperty('--xwave', `${Math.floor(rand(-60, 60))}px`);
+          z.style.setProperty('--r0', `${Math.floor(rand(-25, 25))}deg`);
+          z.style.setProperty('--r1', `${Math.floor(rand(-10, 10))}deg`);
+          z.style.setProperty('--r2', `${Math.floor(rand(-30, 30))}deg`);
+          z.style.setProperty('--dur', `${rand(12, 28)}s`);
+          z.style.setProperty('--delay', `-${rand(0, 20)}s`);
+          z.style.setProperty('--alpha', `${rand(0.08, 0.22)}`);
+
+          root.appendChild(z);
+        }
+      }
+
+      // initial burst
+      spawn(40);
+
+      // trickle more, cap around 80 at a time
+      setInterval(() => {
+        const current = document.querySelectorAll('.zz-fly').length;
+        if (current < 80) spawn(3);
+      }, 4000);
+    })();
   </script>
 </body>
 </html>
